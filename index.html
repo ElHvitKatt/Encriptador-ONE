@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <title>Encriptador de Textos ONE</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="contenedor">
+                <div class="titulo">
+                    <h1 data-value="ENCRIPTADOR ONE">ENCRIPTADOR ONE</h1>
+                </div>
+                <div class="alura_logo">
+                    <h2><img src="Imagenes/Vector.png"></h2>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="inputs">
+                <input type="text" id="mensaje" class="campo_ingreso" placeholder="Escribe el mensaje" onkeyup="javascript:this.value=this.value.toLowerCase();">
+                <div class="botones">
+                    <button id="encriptar" class="b_encriptar">Encriptar</button>
+                    <button id="desencriptar" class="b_desencriptar">Desencriptar</button>
+                </div>    
+                <br>
+                <input type="text" id="mensaje_encriptado" disabled class="campo_salida" placeholder="Mensaje encriptado">
+                <button id="copiar" class="b_copiar">Copiar</button>
+            </div>
+        </main>
+        <footer>
+            <h2 class="footer">Eliasid Mercado - redes</h2>
+        </footer>
+    </body>
+</html>
+
+<script>
+        var mensaje = document.querySelector("#mensaje"); //Variable que conecta el input desde el HTML.
+        var mensaje_encriptado = document.querySelector("#mensaje_encriptado"); //variable que conecta la casilla de salida del HTML.
+        var button_encriptar = document.querySelector("#encriptar");//conecta el botón que ejecute la función de encriptar desde el HTML.
+        var button_desencriptar = document.querySelector("#desencriptar"); //conecta el botón que ejecute la función de encriptar desde el HTML.
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        let interval = null;
+
+        document.querySelector("h1").onmouseover = event => {  
+        let iteration = 0;
+  
+        clearInterval(interval);
+  
+        interval = setInterval(() => {
+        event.target.innerText = event.target.innerText
+        .split("") 
+        .map((letter, index) => {
+            if(index < iteration) {
+                return event.target.dataset.value[index];
+            }
+            return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+    
+            if(iteration >= event.target.dataset.value.length){ 
+                clearInterval(interval);
+            }
+    
+            iteration += 1 / 3;
+            }, 30);
+        }
+
+
+        //función que valida los caracteres especiales y acentos
+        function validarTexto() {
+            var texto = mensaje.value;
+            var regex = /[0-9áéíóú]/;
+            if (regex.test(texto)) {
+                alert("Los caracteres especiales no están permitidos. Por favor, ingresa un nuevo texto.");
+                mensaje.value = "";
+                mensaje_encriptado.value = "";
+                mensaje_encriptado.disabled = true;
+                return false;
+            }
+            return true;
+        }
+       //Función que verifica los caracteres especiales.
+        function encriptar() { 
+            if (validarTexto()) {
+            var texto = mensaje.value;
+            texto = texto.replace(/i/g, "imes");//La letra "i" es convertida para "imes"            
+            texto = texto.replace(/e/g, "enter");//La letra "e" es convertida para "enter"
+            texto = texto.replace(/a/g, "ai");//La letra "a" es convertida para "ai"
+            texto = texto.replace(/o/g, "ober");//La letra "o" es convertida para "ober"
+            texto = texto.replace(/u/g, "ufat");//La letra "u" es convertida para "ufat"
+            mensaje_encriptado.value = texto;//acá se cambia el valor de mensaje_encriptado por el mensaje con los cambios.
+            mensaje_encriptado.disabled = false;
+            }         
+        }
+         //función que remplaza las vocales con las directrices dadas.
+        function desencriptar() { //reversa el replace anterior a vocales
+            var texto_encriptado = mensaje.value;
+            texto_encriptado = texto_encriptado.replace(/enter/g, "e");
+            texto_encriptado = texto_encriptado.replace(/ai/g, "a");
+            texto_encriptado = texto_encriptado.replace(/ober/g, "o");
+            texto_encriptado = texto_encriptado.replace(/ufat/g, "u");
+            texto_encriptado = texto_encriptado.replace(/imes/g, "i");
+            mensaje_encriptado.value = texto_encriptado;
+        }
+
+        button_encriptar.onclick = encriptar; //evento que ejecuta la función encriptar.
+        button_desencriptar.onclick = desencriptar; //evento que ejecuta la función desencriptar.
+        
+        var copiarBoton = document.querySelector("#copiar");//conecta el botón de copiado desde el HTML
+        
+        copiarBoton.onclick = function() { //evento que copia la salida de la función encriptar.
+            mensaje_encriptado.select();
+            document.execCommand("copy");
+            mensaje.value = ""; //limpia el campo de texto ingresado despues de copiar.
+        };
+</script>

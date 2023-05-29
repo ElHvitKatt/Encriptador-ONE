@@ -1,0 +1,182 @@
+@charset "UTF-8";
+body {
+  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Mono", monospace;
+  position: relative;
+  min-height: 100%;
+  margin: 0;
+  padding-bottom: 200px;
+  box-sizing: border-box;
+  background-color: #050801;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+h1 {
+  font-family: "Space Mono", monospace;
+  font-size: 6rem;
+  color: white;
+  place-items: center;
+  margin-bottom: 100px;
+}
+
+.titulo {
+  font-size: 70px;
+}
+
+.alura_logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px;
+  background-image: url(Imagenes/Vector.png);
+  background-position: top left;
+  background-repeat: no-repeat;
+  margin: 33px 50px;
+  width: 25px;
+  height: 25px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.campo_ingreso {
+  font-family: biko;
+  letter-spacing: 4px;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #a7a7a7;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #fff;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.campo_ingreso {
+  width: 75%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.campo_salida {
+  width: 75%; 
+  margin: 0 auto; 
+}
+
+.b_encriptar {
+  margin-right: 30px;
+  padding: 12px 20px;
+  background-color: transparent;
+  color: #03e9f4;
+  font-weight: bold;
+  border: none;
+  border-radius: 2px;
+  letter-spacing: 4px;
+  overflow: hidden;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.b_encriptar:hover {
+  background: #03e9f4;
+  color: #050801;
+  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 200px #03e9f4;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(0, 0, 0, 0.3333333333));
+}
+
+.b_desencriptar {
+  margin-right: 30px;
+  padding: 12px 20px;
+  background-color: transparent;
+  color: #E9F403;
+  font-weight: bold;
+  border: none;
+  border-radius: 2px;
+  letter-spacing: 4px;
+  overflow: hidden;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.b_desencriptar:hover {
+  background: #E9F403;
+  color: #050801;
+  box-shadow: 0 0 5px #E9F403, 0 0 25px #E9F403, 0 0 50px #E9F403, 0 0 200px #E9F403;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(0, 0, 0, 0.3333333333));
+}
+
+.campo_salida {
+  font-family: biko;
+  letter-spacing: 4px;
+  width: 75%;
+  margin-top: 80px;
+  border: 0;
+  border-bottom: 2px solid #a7a7a7;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #ffff56;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.b_copiar {
+  margin-right: 30px;
+  padding: 12px 20px;
+  background-color: transparent;
+  color: #F403E9;
+  font-weight: bold;
+  border: none;
+  border-radius: 2px;
+  letter-spacing: 4px;
+  overflow: hidden;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.b_encriptar, .b_desencriptar, .b_copiar {
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  width: 170px;
+}
+
+.b_copiar:hover {
+  background: #F403E9;
+  color: #050801;
+  box-shadow: 0 0 5px #F403E9, 0 0 25px #F403E9, 0 0 50px #F403E9, 0 0 90px #F403E9;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(0, 0, 0, 0.3333333333));
+}
+
+.footer {
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  transform: translateY(50%);
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .titulo {
+    font-size: 40px;
+  }
+  .alura_logo {
+    margin: 10px;
+  }
+}/*# sourceMappingURL=style.css.map */
